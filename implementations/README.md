@@ -1,5 +1,3 @@
----
-
 # CircuitVerse Extensions: Sequential Logic Components
 
 ## Overview
