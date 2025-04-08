@@ -8,7 +8,7 @@ To effectively extend CircuitVerse with new hardware components, it's essential 
 
 CircuitVerse follows a modular, layered architecture with clear separation of concerns:
 
-![Core Architecture](<Core Architecture.png>)
+![Core Architecture](../images/Core%20Architecture.png)
 
 ### Core Components:
 
@@ -28,11 +28,11 @@ The codebase is organized around these key files:
 - **node.js**: Defines nodes and connection logic
 - **wire.js**: Manages connections between nodes
 - **engine.js**: Core simulation and rendering logic
-- **modules/*.js**: Individual circuit element types
+- **modules/\*.js**: Individual circuit element types
 - **simulationArea.js**: Manages the simulation canvas
 - **canvasApi.js**: Drawing utilities
 
-![Architecture](Architecture.png)
+![Architecture](../images/Architecture.png)
 
 ### 1. Circuit Representation (Scope)
 
@@ -80,37 +80,43 @@ Looking at various component files (like `simulator/src/modules/AndGate.js`), we
 
 ```javascript
 export default class AndGate extends CircuitElement {
-    constructor(x, y, scope = globalScope, dir = "RIGHT", inputLength = 2, bitWidth = 1) {
-        super(x, y, scope, dir, bitWidth);
-        // Component setup
-        this.setDimensions(15, 20);
-        this.inp = [];
-        this.inputSize = inputLength;
-        // Node creation
-        for (let i = 0; i < inputLength; i++) {
-            // create input nodes
-        }
-        this.output1 = new Node(20, 0, 1, this);
+  constructor(
+    x,
+    y,
+    scope = globalScope,
+    dir = "RIGHT",
+    inputLength = 2,
+    bitWidth = 1
+  ) {
+    super(x, y, scope, dir, bitWidth);
+    // Component setup
+    this.setDimensions(15, 20);
+    this.inp = [];
+    this.inputSize = inputLength;
+    // Node creation
+    for (let i = 0; i < inputLength; i++) {
+      // create input nodes
     }
-    
-    // Component behavior
-    resolve() {
-        let result = this.inp[0].value || 0;
-        for (let i = 1; i < this.inputSize; i++)
-            result &= this.inp[i].value || 0;
-        this.output1.value = result >>> 0;
-        simulationArea.simulationQueue.add(this.output1);
-    }
-    
-    // Visual rendering
-    customDraw() {
-        // Drawing logic
-    }
-    
-    // Serialization
-    customSave() {
-        // Return serialized state
-    }
+    this.output1 = new Node(20, 0, 1, this);
+  }
+
+  // Component behavior
+  resolve() {
+    let result = this.inp[0].value || 0;
+    for (let i = 1; i < this.inputSize; i++) result &= this.inp[i].value || 0;
+    this.output1.value = result >>> 0;
+    simulationArea.simulationQueue.add(this.output1);
+  }
+
+  // Visual rendering
+  customDraw() {
+    // Drawing logic
+  }
+
+  // Serialization
+  customSave() {
+    // Return serialized state
+  }
 }
 ```
 
@@ -119,6 +125,7 @@ export default class AndGate extends CircuitElement {
 The connectivity model in CircuitVerse revolves around Nodes and Wires:
 
 - **Nodes** (`Node` class) are connection points on components:
+
   - Input nodes (receive signals)
   - Output nodes (generate signals)
   - Each node has a bitWidth, value, and parent component
@@ -142,7 +149,7 @@ resolve() {
         // For each connection
         for (var i = 0; i < this.connections.length; i++) {
             const node = this.connections[i];
-            
+
             // Different handling based on node type
             switch (node.type) {
                 case NODE_OUTPUT:
@@ -165,7 +172,7 @@ resolve() {
 
 CircuitVerse employs an event-driven simulation model that's both efficient and accurate:
 
-![dataflow](dataflow.png)
+![dataflow](../images/dataflow.png)
 
 ### 1. Event Queue System
 
@@ -179,31 +186,32 @@ Looking at `simulator/src/eventQueue.js`, we see how the queue is structured:
 
 ```javascript
 export default class EventQueue {
-    constructor(size) {
-        this.size = size;
-        this.queue = new Array(size);
-        this.frontIndex = 0;
-        this.time = 0;
-    }
-    
-    add(obj, delay) {
-        // Add element to queue with priority
-    }
-    
-    pop() {
-        // Remove and return highest priority element
-    }
+  constructor(size) {
+    this.size = size;
+    this.queue = new Array(size);
+    this.frontIndex = 0;
+    this.time = 0;
+  }
+
+  add(obj, delay) {
+    // Add element to queue with priority
+  }
+
+  pop() {
+    // Remove and return highest priority element
+  }
 }
 ```
 
 ### 2. Simulation Cycle
-![loop](loop.png)
+
+![loop](../images/loop.png)
 
 The simulation cycle follows a specific sequence:
 
 1. **Initialization**: Reset nodes if needed
 2. **Queue Seeding**: Add input elements to simulation queue
-3. **Processing Loop**: 
+3. **Processing Loop**:
    - Pop next node from queue
    - Resolve node (update based on inputs)
    - Add affected nodes to queue
@@ -215,32 +223,32 @@ In `simulator/src/engine.js`, the core simulation function (`play()`) implements
 
 ```javascript
 export function play(scope = globalScope, resetNodes = false) {
-    // Reset if needed
-    if (resetNodes || forceResetNodes) {
-        scope.reset();
-        simulationArea.simulationQueue.reset();
-    }
+  // Reset if needed
+  if (resetNodes || forceResetNodes) {
+    scope.reset();
+    simulationArea.simulationQueue.reset();
+  }
 
-    // Add inputs to queue
-    scope.addInputs();
-    
-    // Process queue until empty
-    while (!simulationArea.simulationQueue.isEmpty()) {
-        elem = simulationArea.simulationQueue.pop();
-        elem.resolve();
-        
-        // Safety check for infinite loops
-        stepCount++;
-        if (stepCount > 1000000) {
-            showError('Simulation Stack limit exceeded');
-            break;
-        }
+  // Add inputs to queue
+  scope.addInputs();
+
+  // Process queue until empty
+  while (!simulationArea.simulationQueue.isEmpty()) {
+    elem = simulationArea.simulationQueue.pop();
+    elem.resolve();
+
+    // Safety check for infinite loops
+    stepCount++;
+    if (stepCount > 1000000) {
+      showError("Simulation Stack limit exceeded");
+      break;
     }
-    
-    // Check for contentions
-    if (simulationArea.contentionPending.size() > 0) {
-        // Handle contentions
-    }
+  }
+
+  // Check for contentions
+  if (simulationArea.contentionPending.size() > 0) {
+    // Handle contentions
+  }
 }
 ```
 
@@ -280,9 +288,9 @@ Elements are drawn in a specific order to ensure proper layering:
 
 ```javascript
 window.renderOrder = [
-    ...(moduleList.slice().reverse()),  // Components (back to front)
-    'wires',                           // Wires on top of components
-    'allNodes'                         // Nodes on top of wires
+  ...moduleList.slice().reverse(), // Components (back to front)
+  "wires", // Wires on top of components
+  "allNodes", // Nodes on top of wires
 ];
 ```
 
@@ -400,4 +408,3 @@ To create a new component, we need to:
 4. Create an SVG icon for the component palette
 
 This understanding of the simulator internals provides the foundation for implementing new components like shift registers and counters, as proposed for this project.
-
