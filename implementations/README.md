@@ -67,9 +67,7 @@ All components follow the standard component pattern in CircuitVerse:
 
 Here’s a video showing these components in action:
 
-[Demo Video]
-
-_Note: I’ll be attaching the video soon!_
+<iframe width="560" height="315" src="https://www.youtube.com/embed/Yu_OU_7A4Z8" frameborder="0" allowfullscreen></iframe>
 
 ## Future Ideas
 
