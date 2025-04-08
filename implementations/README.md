@@ -1,5 +1,3 @@
-Here’s a friendlier and more personal version that clearly conveys this was part of your GSoC preparation for CircuitVerse:
-
 ---
 
 # CircuitVerse Extensions: Sequential Logic Components
