@@ -17,18 +17,17 @@ The repo is organized to give a clear picture of both the research and the imple
 
 - **`docs/`**: Technical deep dives
 
-  - `simulator-overview.md`: Overview of how the simulator works under the hood
-  - `adding-elements.md`: Step-by-step guide to building new components
-  - `implementation-details.md`: Specifics of how each shift register was built
+  - [`simulator-overview.md`](./docs/simulator-overview.md): Overview of how the simulator works under the hood
+  - [`adding-elements.md`](./docs/implementation-details.md): Step-by-step guide to building new components
 
-- **`images/`**: Diagrams and screenshots used in documentation
+- [**`images/`**](./images/): Diagrams and screenshots used in documentation
 
-- **`implementations/`**: Working prototypes
+- [**`implementations/`**](./implementations/README.md): Working prototypes
 
   - Includes SISO, SIPO, PISO, PIPO, bidirectional and universal shift registers
   - Ring Counter and LFSR also implemented as advanced use cases
 
-- **`suggestions/`**: Future features and ideas
+- [**`suggestions/`**](./suggestions/README.md): Future features and ideas
   - A “Component Explorer” for students to peek inside how components work
   - A drag-and-drop Visual Component Creator—no coding required!
 
