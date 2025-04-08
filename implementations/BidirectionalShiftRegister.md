@@ -6,6 +6,8 @@
 
 The Bidirectional Shift Register extends basic shift register functionality by allowing data to shift in either left (toward MSB) or right (toward LSB) direction depending on a control input. This provides more flexibility for data manipulation operations.
 
+![SISO](../images/BSR.png)
+
 ## Implementation Details
 
 This CircuitVerse component builds upon the basic shift register with these features:

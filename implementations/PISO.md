@@ -6,6 +6,8 @@
 
 The Parallel-In Serial-Out (PISO) shift register allows multiple bits to be loaded simultaneously in parallel mode, and then shifted out one bit at a time in serial mode. This makes it ideal for parallel-to-serial data conversion applications.
 
+![SISO](../images/PISO.png)
+
 ## Implementation Details
 
 This CircuitVerse component inherits from the `CircuitElement` base class and provides:

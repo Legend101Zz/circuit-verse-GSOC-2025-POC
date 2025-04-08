@@ -6,6 +6,8 @@
 
 A Ring Counter is a special type of shift register where a single '1' bit circulates among all bit positions, with all other positions containing '0'. It creates a "ring" of shifting bits where the output of the last flip-flop is connected to the input of the first flip-flop.
 
+![SISO](../images/ring.png)
+
 ## Implementation Details
 
 This CircuitVerse component provides:

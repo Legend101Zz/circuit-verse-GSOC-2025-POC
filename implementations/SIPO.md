@@ -6,6 +6,8 @@
 
 The Serial-In Parallel-Out (SIPO) shift register accepts data serially (one bit at a time) but makes all stored bits available simultaneously as parallel outputs. This makes it valuable for serial-to-parallel data conversion applications.
 
+![SISO](../images/SIPO.png)
+
 ## Implementation Details
 
 This implementation extends CircuitVerse's `CircuitElement` class with:

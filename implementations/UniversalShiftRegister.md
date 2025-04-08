@@ -6,6 +6,8 @@
 
 The Universal Shift Register is the most versatile type of shift register, combining multiple operating modes in a single component. It can perform parallel loading, bidirectional shifting, and holding current value, making it suitable for a wide range of sequential logic applications.
 
+![SISO](../images/USR.png)
+
 ## Implementation Details
 
 This CircuitVerse component extends the basic shift register concept with:

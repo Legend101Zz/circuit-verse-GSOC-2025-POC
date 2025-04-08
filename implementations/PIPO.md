@@ -6,6 +6,8 @@
 
 The Parallel-In Parallel-Out (PIPO) shift register accepts multiple bits simultaneously as parallel inputs and makes all stored bits available simultaneously as parallel outputs. Unlike other shift registers, it doesn't perform shifting operations but instead acts as a synchronized data latch or buffer.
 
+![SISO](../images/PIPO.png)
+
 ## Implementation Details
 
 This implementation extends CircuitVerse's `CircuitElement` class with:

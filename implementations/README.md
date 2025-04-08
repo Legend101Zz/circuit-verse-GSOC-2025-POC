@@ -14,6 +14,8 @@ Each component has been built following CircuitVerse's architecture and includes
 
 ### Basic Shift Registers
 
+![Basic Shift Registers](../images/ele-1.png)
+
 | Component                           | Description                                       | Link                             |
 | ----------------------------------- | ------------------------------------------------- | -------------------------------- |
 | **SISO (Serial-In Serial-Out)**     | Basic shift register with serial input and output | [View Implementation](./SISO.md) |
@@ -29,6 +31,8 @@ Each component has been built following CircuitVerse's architecture and includes
 | **Universal Shift Register**     | Supports hold, shift left/right, and load modes | [View Implementation](./UniversalShiftRegister.md)     |
 
 ### Specialized Counters
+
+![Basic Shift Registers](../images/ele-2.png)
 
 | Component                                 | Description                                            | Link                                    |
 | ----------------------------------------- | ------------------------------------------------------ | --------------------------------------- |
@@ -68,7 +72,6 @@ All components follow the standard component pattern in CircuitVerse:
 Here’s a video showing these components in action:
 
 [![Demo Video](https://img.youtube.com/vi/Yu_OU_7A4Z8/0.jpg)](https://youtu.be/Yu_OU_7A4Z8)
-
 
 ## Future Ideas
 

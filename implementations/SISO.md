@@ -6,6 +6,8 @@
 
 The Serial-In Serial-Out (SISO) shift register is the simplest form of shift register that accepts one bit of data at a time and outputs one bit at a time. It functions as a digital delay line, where input data is shifted through the register with each clock pulse.
 
+![SISO](../images/SISO.png)
+
 ## Implementation Details
 
 This component extends CircuitVerse's `CircuitElement` class with the following features:

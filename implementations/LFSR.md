@@ -6,6 +6,8 @@
 
 The Linear Feedback Shift Register (LFSR) is a special shift register that uses feedback connections to generate pseudo-random bit sequences. It consists of a shift register with selected outputs XORed together and fed back to the input, creating a deterministic but statistically random-looking sequence.
 
+![SISO](../images/LFSR.png)
+
 ## Implementation Details
 
 This CircuitVerse component provides:
